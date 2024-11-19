@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance;
+    public static T _instance;
     public static T Intance
     {
         get
@@ -14,6 +14,8 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
                 _instance = FindObjectOfType<T>();
                 DontDestroyOnLoad(_instance.gameObject);
             }
+            
+
             return _instance;
         }
     }

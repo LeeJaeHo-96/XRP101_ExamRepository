@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +10,10 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private void Awake()
     {
+        if (this.gameObject != null)
         SingletonInit();
         Score = 0.1f;
+
     }
 
     public void Pause()
