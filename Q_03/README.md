@@ -21,4 +21,16 @@
 제시된 프로젝트에서 발생하는 `문제들을 모두 서술`하고 올바르게 동작하도록 `소스코드를 개선`하시오.
 
 ## 답안
-- 
+- 발견된 문제점
+1. 플레이어 오브젝트에 리지드바디가 없어 Trigger가 실행되지 않음
+> 플레이어 오브젝트에 Rigidbody 컴포넌트 추가
+2. TurretController 스크립트의 Fire 함수 > 코루틴에 제한을 걸지않아 중첩 실행되어 FireRoutine이 계속해서 실행됨
+> 코루틴 변수가 null일 경우에만 실행하게 제한을 걸어줘서 1번만 실행되게 처리
+3. Bullet 프리팹에 리지드바디가 없어 총알이 움직이지 않음(Rigidbody참조 에러 발생)
+> Bullet 프리팹에 Rigidbody 컴포넌트 추가
+4. Turret의 Collider 범위 밖으로 나가도 총알 발사가 멈추지않음
+> OnTriggerExit 을 만들어 StopCoroutine으로 코루틴을 멈춰줌
+5. BulletController > OnTriggerEnter의 other를 찾지 못함
+> other는 collider이기 때문에 GetComponent가 아닌 GetComponentInParent를 사용해야 오브젝트의 컴포넌트틀 불러올 수 있음
+6. 플레이어의 체력이 0 이하가 되었을 때, 소리가 재생됨과 동시에 플레이어 오브젝트가 비활성화 되어 소리가 재생되지 않음
+> AudidManager를 따로 생성하여 해당 오브젝트를 통해 소리가 재생되게 변경함
