@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    public float _MoveSpeed;
     public float MoveSpeed
     {
         get => MoveSpeed;
-        private set => MoveSpeed = value;
+        private set => _MoveSpeed = value;
+        
     }
+    
 
     private void Awake()
     {
