@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [field: Range(0, 100)]
     public int Hp { get; private set; }
 
+    [SerializeField] private GameObject audioManager;
     private AudioSource _audio;
 
     private void Awake()
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private void Init()
     {
-        _audio = GetComponent<AudioSource>();
+        _audio = audioManager.GetComponent<AudioSource>();
     }
     
     public void TakeHit(int damage)
