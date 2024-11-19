@@ -13,6 +13,11 @@ public class StateMachine
     public StateType CurrentType { get; private set; }
     private PlayerState CurrentState => _stateContainer[CurrentType];
 
+    StateType curState;
+
+
+
+
     public StateMachine(params PlayerState[] states)
     {
         _stateContainer = new Dictionary<StateType, PlayerState>();
@@ -28,6 +33,7 @@ public class StateMachine
 
         CurrentType = states[0].ThisType;
         CurrentState.Enter();
+        return;
     }
 
     public void OnUpdate()
@@ -37,8 +43,10 @@ public class StateMachine
 
     public void ChangeState(StateType state)
     {
+        
         CurrentState.Exit();
         CurrentType = state;
+        curState = state;
         CurrentState.Enter();
     }
 }

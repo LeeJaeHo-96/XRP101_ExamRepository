@@ -8,4 +8,6 @@ public class ShieldeMonster : Monsterbase
     {
         base.Init();
     }
+
+    
 }
