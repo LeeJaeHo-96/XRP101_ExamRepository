@@ -6,8 +6,9 @@ public class CubeController : MonoBehaviour
 {
     public Vector3 SetPoint { get; private set; }
 
-    public void SetPosition()
+    public void SetPosition(Vector3 pos)
     {
+        SetPoint = pos;
         transform.position = SetPoint;
     }
 }
